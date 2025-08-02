@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="restaurant.css">
+</head>
+<body>
+     <header>
+        <div class="head"> لقمة هنية</div>
+        <ul>
+            <li><a href="restaurant.html">الرئيسية</a></li>
+            <li><a href="المنيو.html">المنيو</a></li>
+            <li><a href="whome.html">من نحن</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </header>
+    <h1 class="t1">قائمة الطعام</h1>
+    <section class="f1">
+        
+        <div class="p1">
+        <img src="1.jpg" alt="كريب شيش">
+        <h3>كريب شيش</h3>
+        <p>70جنيه</p> 
+        <button class="c1" onclick="addToCart('كريب شيش', 70)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p2">
+        <img src="2.jpg" alt="شاورمه فراخ">
+        <h3>شاورمه فراخ</h3>
+        <p>80جنيه</p> 
+        <button class="c1" onclick="addToCart('شاورمه فراخ', 80)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p3">
+        <img src="3.jpg" alt="كشري">
+        <h3>كشري</h3>
+        <p>50جنيه</p> 
+        <button class="c1" onclick="addToCart('كشري', 50)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p4">
+        <img src="4.jpg" alt="كبده">
+        <h3>كبده</h3>
+        <p>40جنيه</p> 
+        <button class="c1" onclick="addToCart('كبده', 40)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p5">
+        <img src="5.jpg" alt="كوفته">
+        <h3>كوفته</h3>
+        <p>50جنيه</p> 
+        <button class="c1" onclick="addToCart('كوفته', 50)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p6">
+        <img src="6.jpg" alt="كباب">
+        <h3>كباب</h3>
+        <p>50جنيه</p> 
+        <button class="c1" onclick="addToCart('كباب', 50)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p7">
+        <img src="7.jpg" alt="حواوشي">
+        <h3>حواوشي</h3>
+        <p>30جنيه</p> 
+        <button class="c1" onclick="addToCart('حواوشي',30)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p8">
+        <img src="8.jpg" alt="طاجن باميه بلحمه">
+        <h3>طاجن باميه باللحمه</h3>
+        <p>120جنيه</p> 
+        <button class="c1" onclick="addToCart('طاجن باميه باللحمه', 120)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p9">
+        <img src="9.jpg" alt="طاجن سمك">
+        <h3>طاجن سمك</h3>
+        <p>200جنيه</p> 
+        <button class="c1" onclick="addToCart('طاجن سمك', 200)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p10">
+        <img src="10.jpg" alt="كريب بانيه">
+        <h3>كريب بانيه</h3>
+        <p>70جنيه</p> 
+        <button class="c1" onclick="addToCart('كريب بانيه', 70)">اطلب الأن</button>
+
+        </div>
+
+        <div class="p11">
+        <img src="11.jpg" alt="كبده اسكندراني">
+        <h3>كبده اسكندراني</h3>
+        <p>70جنيه</p> 
+        <button class="c1" onclick="addToCart('كبده اسكندراني', 70)">اطلب الأن</button>
+        </div>
+        <div class="p12">
+        <img src="12.jpg" alt="مولوخيه بالأرانب">
+        <h3>ملوخيه بالأرانب</h3>
+        <p>300جنيه</p> 
+        <button class="c1" onclick="addToCart('ملوخيه بالأرانب', 300)">اطلب الأن</button>
+
+        </div>
+        
+    </section>
+    <script>
+    function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name: name, price: price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'cart.html'; // تحويل المستخدم للسلة
+    }
+</script>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 | مطعم لقمة هنية</p>
+    </footer>
+</body>
+</html>

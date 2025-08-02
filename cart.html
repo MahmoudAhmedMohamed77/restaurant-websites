@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>سلة المشتريات | متجر الملابس العصري</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+   <link rel="stylesheet" href="restaurant.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="restaurant.html">الرئيسية</a>
+      <a href="المنيو.html">المنتجات</a>
+      <a href="cart.html">سلة المشتريات</a>
+      <a href="contact.html">تواصل معنا</a>
+    </nav>
+  </header>
+  <section class="cart">
+    <h2>سلة المشتريات</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    <button onclick="clearCart()">إفراغ السلة</button>
+    <button onclick="sendWhatsAppOrder()">إرسال الطلب عبر واتساب</button>
+
+  </section>
+  <footer>
+    جميع الحقوق محفوظة &copy; 2025 | متجر الملابس العصري
+  </footer>
+  <!-- كود الجافاسكربت -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartItemsDiv = document.getElementById('cart-items');
+    let cartTotalDiv = document.getElementById('cart-total');
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p>السلة فارغة</p>';
+      cartTotalDiv.innerHTML = '';
+    } else {
+      cart.forEach(item => {
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <p><strong>${item.name}</strong> - ${item.price} جنيه</p>
+          </div>
+        `;
+        total += item.price;
+      });
+
+      cartTotalDiv.innerHTML = `<p>الإجمالي: ${total} جنيه</p>`;
+    }
+  });
+
+  function clearCart() {
+    localStorage.removeItem('cart');
+    location.reload();
+  }
+
+  function sendWhatsAppOrder() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+      alert("السلة فارغة، أضف عناصر أولاً.");
+      return;
+    }
+
+    let message = "طلب جديد من موقع لقمة هنية:\n\n";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      message += `${index + 1}- ${item.name} - ${item.price} جنيه\n`;
+      total += item.price;
+    });
+
+    message += `\nالإجمالي: ${total} جنيه`;
+
+    let phoneNumber = "201012036142"; // رقمك بصيغة واتساب
+
+    let encodedMessage = encodeURIComponent(message);
+    let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappLink, "_blank");
+  }
+</script>
+
+</body>
+</html>
